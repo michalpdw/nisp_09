@@ -142,7 +142,108 @@ footer {
 }
 
 footer p {
-    font-weight: 500;
+    font-weight: 500;/* --- WCZEŚNIEJSZE STYLE ZOSTAJĄ (Body, Header, Container, Card) --- */
+
+/* ... (tu wklej poprzedni style.css) ... */
+
+/* NOWY LAYOUT SYSTEM */
+.layout-wrapper {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px; /* Bannery po 220px szerokości */
+    gap: 20px;
+    max-width: 1700px; /* Zwiększony max-width by pomieścić boki */
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: start;
+}
+
+/* STYL BANNERÓW (BROSZUR) */
+.banner {
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: sticky; /* Bannery będą "jechać" za użytkownikiem podczas przewijania */
+    top: 20px;
+    height: 600px; /* Proporcja pionowej ulotki */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-content {
+    padding: 30px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.banner-left { border-left: 10px solid #6e8efb; }
+.banner-right { border-right: 10px solid #a777e3; }
+
+.banner-tag {
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #a777e3;
+    margin-bottom: 10px;
+}
+
+.banner h2 {
+    font-size: 1.5rem;
+    color: #2d3748;
+    margin-bottom: 25px;
+    border-bottom: 2px dashed #eee;
+    padding-bottom: 10px;
+}
+
+.event-item {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.event-item strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #6e8efb;
+    margin-bottom: 5px;
+}
+
+.event-item p {
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+    color: #4a5568;
+}
+
+.banner-promo {
+    margin-top: auto;
+    background: #fdf2f2;
+    padding: 15px;
+    border-radius: 15px;
+    color: #e53e3e;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.banner-footer {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: #cbd5e0;
+    text-transform: uppercase;
+}
+
+/* RESPONSYWNOŚĆ - Na tabletach i telefonach ukrywamy bannery boczne */
+@media (max-width: 1200px) {
+    .layout-wrapper {
+        grid-template-columns: 1fr; /* Tylko jedna kolumna (środek) */
+    }
+    .banner {
+        display: none; /* Ukryj bannery na małych ekranach */
+    }
+    .container {
+        max-width: 100%;
+    }
+}
     letter-spacing: 1px;
     opacity: 0.95;
 }
