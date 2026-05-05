@@ -1,102 +1,144 @@
-/* --- WCZEŚNIEJSZE STYLE ZOSTAJĄ (Body, Header, Container, Card) --- */
-
-/* ... (tu wklej poprzedni style.css) ... */
-
-/* NOWY LAYOUT SYSTEM */
-.layout-wrapper {
-    display: grid;
-    grid-template-columns: 220px 1fr 220px; /* Bannery po 220px szerokości */
-    gap: 20px;
-    max-width: 1700px; /* Zwiększony max-width by pomieścić boki */
-    margin: 0 auto;
-    padding: 0 20px;
-    align-items: start;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* STYL BANNERÓW (BROSZUR) */
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    overflow-x: hidden; /* Zapobiega przewijaniu na boki */
+}
+
+/* Header & Footer */
+header, footer {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+footer {
+    margin-top: 50px;
+    padding: 2rem 1rem;
+}
+
+/* Główny układ - Trzy kolumny */
+.layout-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1600px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Bannery boczne */
 .banner {
+    flex: 0 0 220px; /* Stała szerokość bannerów */
     background: white;
     border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    position: sticky; /* Bannery będą "jechać" za użytkownikiem podczas przewijania */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    height: fit-content;
+    position: sticky;
     top: 20px;
-    height: 600px; /* Proporcja pionowej ulotki */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    padding: 25px 15px;
 }
 
-.banner-content {
-    padding: 30px 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.banner-left { border-left: 10px solid #6e8efb; }
-.banner-right { border-right: 10px solid #a777e3; }
-
-.banner-tag {
-    font-size: 0.7rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #a777e3;
-    margin-bottom: 10px;
-}
+.banner-left { border-left: 8px solid #6e8efb; }
+.banner-right { border-right: 8px solid #a777e3; }
 
 .banner h2 {
-    font-size: 1.5rem;
-    color: #2d3748;
-    margin-bottom: 25px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
     border-bottom: 2px dashed #eee;
     padding-bottom: 10px;
 }
 
-.event-item {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.event-item strong {
-    display: block;
-    font-size: 0.9rem;
-    color: #6e8efb;
-    margin-bottom: 5px;
-}
-
-.event-item p {
-    font-size: 0.85rem;
-    margin-bottom: 3px;
-    color: #4a5568;
-}
+.event-item { margin-bottom: 20px; font-size: 0.85rem; }
+.event-item strong { color: #6e8efb; display: block; margin-bottom: 5px; }
 
 .banner-promo {
-    margin-top: auto;
-    background: #fdf2f2;
-    padding: 15px;
-    border-radius: 15px;
+    background: #fff5f5;
     color: #e53e3e;
+    padding: 10px;
+    border-radius: 10px;
     font-weight: bold;
+    text-align: center;
     font-size: 0.8rem;
 }
 
-.banner-footer {
-    margin-top: 20px;
-    font-size: 0.7rem;
-    color: #cbd5e0;
-    text-transform: uppercase;
+/* Środkowa treść */
+.main-content {
+    flex: 1; /* Środek zajmuje całą dostępną przestrzeń */
+    max-width: 1000px; /* Ale nie więcej niż 1000px */
 }
 
-/* RESPONSYWNOŚĆ - Na tabletach i telefonach ukrywamy bannery boczne */
-@media (max-width: 1200px) {
-    .layout-wrapper {
-        grid-template-columns: 1fr; /* Tylko jedna kolumna (środek) */
-    }
-    .banner {
-        display: none; /* Ukryj bannery na małych ekranach */
-    }
-    .container {
-        max-width: 100%;
-    }
+/* Sekcja Mapy */
+.map-section {
+    background: white;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.map-container {
+    width: 100%;
+    aspect-ratio: 1408 / 768; /* Proporcje Twojej mapy */
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Kafelki */
+.zones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    border-top: 6px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.card:hover { transform: translateY(-5px); }
+.card-icon { font-size: 2rem; margin-bottom: 10px; }
+.card h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.card p { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+
+.tag {
+    font-size: 0.7rem;
+    font-weight: bold;
+    background: #f1f2f6;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+/* Kolory kafelków */
+.card-concerts { border-top-color: #ff4d4d; }
+.card-food { border-top-color: #ffcc00; }
+.card-tickets { border-top-color: #9b59b6; }
+.card-chill { border-top-color: #4cd137; }
+.card-fun { border-top-color: #ff9f43; }
+.card-contact { border-top-color: #1abc9c; }
+
+/* Responsywność - Ukrywanie boków na mniejszych ekranach */
+@media (max-width: 1100px) {
+    .banner { display: none; }
+    .layout-wrapper { display: block; }
+    .main-content { margin: 0 auto; }
 }
