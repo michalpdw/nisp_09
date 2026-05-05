@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juwenalia - Mapa Kampusu</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -14,57 +15,66 @@
     </header>
 
     <main class="container">
-        <section class="map-section">
-            <div class="map-container">
-                <img src="mapa_juwenalia.png" alt="Mapa Kampusu Juwenalia" class="map-img">
-            </div>
-        </section>
+        <!-- Sekcja mapy z nową nakładką -->
+    <section class="map-section">
+        <div class="map-container" id="mapContainer">
+            <img src="mapa_juwenalia.png" alt="Mapa Kampusu Juwenalia" class="map-img">
+            <div class="map-overlay"></div> <!-- Warstwa przyciemniająca -->
+        </div>
+    </section>
 
-        <section class="zones-grid">
-            
-            <div class="card card-concerts">
-                <div class="card-icon">🎸</div>
-                <h3>Strefa Koncertowa</h3>
-                <p>Główna Scena i Scena Alternatywna. Tu odbywają się wszystkie najważniejsze występy gwiazd wieczoru.</p>
-                <span class="tag">Sceny A & B</span>
-            </div>
+    <!-- Sekcja kart (dodane data-zone) -->
+    <section class="zones-grid">
+        <div class="card card-concerts" data-zone="concerts">
+            <div class="card-icon">🎸</div>
+            <h3>Strefa Koncertowa</h3>
+            <p>Główna Scena i Scena Alternatywna.</p>
+            <button class="find-btn">git coZnajdź</button>
+            <span class="tag">Sceny A & B</span>
+        </div>
 
-            <div class="card card-food">
-                <div class="card-icon">🍔</div>
-                <h3>Strefa Food Trucków</h3>
-                <p>Najlepsze jedzenie w mieście, od burgerów po kuchnię azjatycką. Miejsce na posiłek regeneracyjny.</p>
-                <span class="tag">Jedzenie i Napoje</span>
-            </div>
+        <div class="card card-food" data-zone="food">
+            <div class="card-icon">🍔</div>
+            <h3>Strefa Food Trucków</h3>
+            <p>Najlepsze jedzenie w mieście.</p>
+            <button class="find-btn">Znajdź</button>
+            <span class="tag">Jedzenie i Napoje</span>
+        </div>
 
-            <div class="card card-tickets">
-                <div class="card-icon">🎟️</div>
-                <h3>Kup Bilet</h3>
-                <p>Studencki: 29 zł | Normalny: 59 zł. Bilety dostępne w kasach przy wejściu oraz w aplikacji mobilnej.</p>
-                <span class="tag">Sprzedaż otwarta</span>
-            </div>
+        <div class="card card-tickets" data-zone="tickets">
+            <div class="card-icon">🎟️</div>
+            <h3>Kup Bilet</h3>
+            <p>Studencki: 29 zł | Normalny: 59 zł.</p>
+            <button class="find-btn">Znajdź</button>
+            <span class="tag">Sprzedaż otwarta</span>
+        </div>
 
-            <div class="card card-chill">
-                <div class="card-icon">🧘</div>
-                <h3>Strefa Chilloutu</h3>
-                <p>Odpocznij na leżakach, naładuj telefon i porozmawiaj ze znajomymi w spokojniejszej atmosferze.</p>
-                <span class="tag">Relaks</span>
-            </div>
+        <div class="card card-chill" data-zone="chill">
+            <div class="card-icon">🧘</div>
+            <h3>Strefa Chilloutu</h3>
+            <p>Odpocznij na leżakach i naładuj telefon.</p>
+            <button class="find-btn">Znajdź</button>
+            <span class="tag">Relaks</span>
+        </div>
 
-            <div class="card card-fun">
-                <div class="card-icon">🎡</div>
-                <h3>Wesołe Miasteczko</h3>
-                <p>Diabelski młyn, karuzele i konkursy z nagrodami od sponsorów. Zabawa przez całą noc!</p>
-                <span class="tag">Atrakcje</span>
-            </div>
+        <div class="card card-fun" data-zone="fun">
+            <div class="card-icon">🎡</div>
+            <h3>Wesołe Miasteczko</h3>
+            <p>Diabelski młyn i karuzele.</p>
+            <button class="find-btn">Znajdź</button>
+            <span class="tag">Atrakcje</span>
+        </div>
 
-            <div class="card card-contact">
-                <div class="card-icon">📞</div>
-                <h3>Kontakt i Pomoc</h3>
-                <p>E-mail: pomoc@juwenalia-test.pl<br>Tel: +48 123 456 789<br>Biuro: DS "Olimp", pok. 101</p>
-                <span class="tag">Info 24/7</span>
-            </div>
+        <div class="card card-contact" data-zone="contact">
+            <div class="card-icon">📞</div>
+            <h3>Kontakt i Pomoc</h3>
+            <p>Biuro: DS "Olimp", pok. 101</p>
+            <button class="find-btn">Znajdź</button>
+            <span class="tag">Info 24/7</span>
+        </div>
+    </section>
 
-        </section>
+
     </main>
 
     <footer>
