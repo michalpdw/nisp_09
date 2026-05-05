@@ -5,6 +5,27 @@
     box-sizing: border-box;
 }
 
+/* Upewnij się, że kontener jest bazą dla pozycjonowania */
+.map-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.map-trigger {
+    position: absolute;
+    z-index: 10; /* Musi być wyższy niż map-overlay i map-img */
+    cursor: pointer;
+    
+    /* DEBUG: Odkomentuj poniższą linię, aby zobaczyć czy prostokąty się pojawiają */
+    /* background: rgba(255, 0, 0, 0.3); */
+}
+
+/* Upewnij się, że overlay nie blokuje kliknięć w triggery pod nim */
+.map-overlay {
+    z-index: 5;
+    pointer-events: none; /* To jest krytyczne! */
+}
+
 body {
     font-family: 'Segoe UI', Roboto, sans-serif;
     background-color: #f4f7f9;
@@ -297,3 +318,4 @@ footer {
     .layout-wrapper { display: block; }
     .main-content { margin: 0 auto; width: 100%; }
 }
+
